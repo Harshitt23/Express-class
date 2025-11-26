@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html>
+
+    <body>
+        <div id="buttonParent"></div>
+
+        <script>
+        
+            /// STATE
+          
+            let state = {
+                count: 0
+            };
+
+          
+            /// EVENT HANDLER
+          
+            function onButtonPress() {
+                state.count++;
+                buttonComponentReRender();
+            }
+
+          
+            /// COMPONENT (UI Renderer)
+          
+            function buttonComponentReRender() {
+                /// Remove old UI
+                document.getElementById("buttonParent").innerHTML = "";
+
+                /// Create new button with updated state
+                const button = document.createElement("button");
+                button.innerHTML = "Counter " + state.count;
+                button.setAttribute("onclick", "onButtonPress()");
+
+                /// Add to DOM
+                document.getElementById("buttonParent").appendChild(button);
+            }
+
+            /// Initial render
+            buttonComponentReRender();
+        </script>
+    </body>
+
+    </html>
